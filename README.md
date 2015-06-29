@@ -19,7 +19,13 @@
 
 ###关于单页面修改title一事
 
+先道出问题：当页面载入时，微信顶部 title 获取并显示，之后怎么用JS修改 title ，无效。
 
+这个是针对IOS出现的 hack ，Android是有效的。
+貌似是IOS的webview没有监听titlechange事件。
+目前的处理就是使用重新载入页面的形式来唤醒页面的title有关事件。
+
+这里使用在页面重载了个iframe的形式：
 
 
 
