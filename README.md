@@ -27,7 +27,23 @@
 
 这里使用在页面重载了个iframe的形式：
 
-
+```
+ //解决iOS设备修改title不起作用的bug
+  function set_title(title) {
+      document.title = title;
+      if (!ua.is_idevice) return;
+      //随便访问iframe访问一个网页，title就可以刷新了
+      var url = 'http://xxx.html';
+      var dom_id = 'refresh-ios-title-iframe';
+      var dom = $('#' + dom_id);
+      if (dom.length == 0) {
+          dom = $('<iframe style="width:0px;height:0px;display:none" id="' + dom_id + '" src="' + url + '" />');
+          $("body").append(dom);
+      } else {
+          dom.attr('src', url);
+      }
+  }
+```
 
 
 
