@@ -27,7 +27,7 @@
 
 这里使用在页面重载了个iframe的形式：
 
-```
+```javascript
  //解决iOS设备修改title不起作用的bug
   function set_title(title) {
       document.title = title;
@@ -44,6 +44,8 @@
       }
   }
 ```
+
+
 
 
 
