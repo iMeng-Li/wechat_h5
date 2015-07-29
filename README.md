@@ -78,14 +78,24 @@
 ​给​目标元素加一条样式规则 cursor: pointer;
 ​推荐后两种。从解决办法来看，​推测在 safari 中，不可点击的元素的点击事件不会冒泡到父级元素。通过添加 cursor: pointer 使得元素变成了可点击的了。
 
-来着：http://happycoder.net/solve-ios-safari-click-event-bug/
+来自：http://happycoder.net/solve-ios-safari-click-event-bug/
 
 
 ###input的一些注意的地方
 
+讲的是，webapp使用了input的时候，会调用系统的输入键盘~~~
+按道理的话，系统会将input推到可视的地方，这只是部分Android低版本或者是hybrid app,也就是低版本，是推不上的。
+我们今天暂且不讨论这个问题，我们是讨论推上去了却不下来！！！
+那个坑啊，本来一开始是想方设法推上去，TMD现在还要想方设法推下来。
 
+其实有一个东东会干涉到
 
+```javascript
+document.getElementById("page").addEventListener('touchmove', function(e) {e.preventDefault();}, false);
+```
+这行JavaScript代码，意思就是：页面禁止了拖动事件。
 
+至于为什么呢，我还得毛线毛线~~~
 
 ###IOS的web设置了body height:100%;注意地方
 
