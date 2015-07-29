@@ -45,11 +45,49 @@
   }
 ```
 
+###iOS Safari 中绑定点击事件失效的解决办法
+
+因为项目里的HTML是使用了模板引擎塞进去的，固然统一的事件会用绑定，也可在模板引擎后面添加。
+我这里使用了全局事件绑定：
+```javascript
+// 是否为系统分发礼包
+    is_system_activity ? to_system_activity() : distribute_activity();
+
+    $("body").on("touchstart", ".explain", function() {
+        if (_hmt) {
+            _hmt.push(["_trackEvent", "点击次数", "查看游戏规则"])
+        }
+        $("#game-info").show();
+    })
+```
+我这里使用了.on()事件，在IOS测试的时候，无效；
+我在想是不是.on事件太新了，啊哈哈哈哈啊哈~~~固然不是啦~！！！
+我就直接使用了.bind()事件来绑定，测试没问题。
+
+那么现在问题来了，到底为什么会这样呢？
+
+######问题描述
+当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。
+
+######解决办法
+解决办法有 4 种可供选择：
+
+​将 click 事件直接绑定到目标​元素（​​即 .target）上
+将目标​元素换成 <a> 或者 button 等可点击的​元素
+​将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上
+​给​目标元素加一条样式规则 cursor: pointer;
+​推荐后两种。从解决办法来看，​推测在 safari 中，不可点击的元素的点击事件不会冒泡到父级元素。通过添加 cursor: pointer 使得元素变成了可点击的了。
+
+来着：http://happycoder.net/solve-ios-safari-click-event-bug/
+
+
+###input的一些注意的地方
 
 
 
 
 
+###IOS的web设置了body height:100%;注意地方
 
 
 
