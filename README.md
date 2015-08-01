@@ -97,11 +97,18 @@ document.getElementById("page").addEventListener('touchmove', function(e) {e.pre
 
 至于为什么呢，我还得毛线毛线~~~
 
+##IOS带来的冲击！~~~~
 ###IOS的web设置了body height:100%;注意地方
 
+因为IOS带来的滑可将整个页面滑动，固然它是会计算页面的高度然后开始将页面拉出去~~
+
+如果没什么必要，没有什么必要再body 设置height:100%, 除非是个全页面；如果是个溢出设置的话，那就会卡~~~卡得厉害！
 
 
-
-
-
-
+###IOS的web监听.scroll()注意的地方
+```javascript
+ $(window).scroll(function() {
+        callback();
+    });
+ ```   
+测试到一些IOS webview是在滑动停止之后才触发这个监听~~~所以就不是实时监听的。
