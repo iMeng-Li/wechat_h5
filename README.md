@@ -91,7 +91,9 @@
 其实有一个东东会干涉到
 
 ```javascript
-document.getElementById("page").addEventListener('touchmove', function(e) {e.preventDefault();}, false);
+document.getElementById("page").addEventListener('touchmove', function(e) {
+     e.preventDefault();
+}, false);
 ```
 这行JavaScript代码，意思就是：页面禁止了拖动事件。
 
