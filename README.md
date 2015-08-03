@@ -114,3 +114,9 @@ document.getElementById("page").addEventListener('touchmove', function(e) {
     });
  ```   
 测试到一些IOS webview是在滑动停止之后才触发这个监听~~~所以就不是实时监听的。
+
+###IOS的双击事件，webview会全屏
+
+双击之后，webview全屏了，就是header只能是重叠了。不知道微信为什么要这样弄，其实header隐藏，我是可以理解和接受。
+
+
